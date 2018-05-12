@@ -1,1 +1,4 @@
 .idea
+vendor
+docker/data
+composer.phar

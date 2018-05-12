@@ -25,16 +25,11 @@ class Desconto500Reais implements DescontoInterface
             return $valor * 0.05;
         }
 
-        return $this->proximo($orcamento);
+        return $this->desconto->obterDesconto($orcamento);
     }
 
     public function setProximoDesconto(DescontoInterface $desconto)
     {
         $this->desconto = $desconto;
-    }
-
-    private function proximo(Orcamento $orcamento)
-    {
-        return $this->desconto->obterDesconto($orcamento);
     }
 }

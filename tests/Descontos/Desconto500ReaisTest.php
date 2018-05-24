@@ -16,6 +16,6 @@ class Desconto500ReaisTest extends TestCase
         $desconto = new Desconto500Reais();
         $valorDoDesconto = $desconto->obterDesconto($orcamento);
 
-        $this->assertEquals(25, $valorDoDesconto);
+        $this->assertEquals(35, $valorDoDesconto);
     }
 }

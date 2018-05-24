@@ -46,7 +46,7 @@ class CalculadoraDeDescontoTest extends TestCase
     {
         $itens = [];
 
-        for ($i = 1; $i <= 3; $i++) {
+        for ($i = 1; $i <= 2; $i++) {
             $item = $this->createMock(OrcamentoItem::class);
             array_push($itens, $item);
         }
@@ -58,6 +58,6 @@ class CalculadoraDeDescontoTest extends TestCase
         $calculadora = new CalculadoraDeDesconto();
         $valor = $calculadora->obterDesconto($orcamento);
 
-        $this->assertEquals(50, $valor);
+        $this->assertEquals(70, $valor);
     }
 }

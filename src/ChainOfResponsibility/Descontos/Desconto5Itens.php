@@ -16,7 +16,7 @@ class Desconto5Itens implements DescontoInterface
         $itens = $orcamento->getItens();
         $valor = $orcamento->getValor();
 
-        if (5 === count($itens)) {
+        if (count($itens) >= 5) {
             return $valor * 0.1;
         }
 

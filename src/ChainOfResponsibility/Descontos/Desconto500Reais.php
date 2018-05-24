@@ -22,7 +22,7 @@ class Desconto500Reais implements DescontoInterface
         $valor = $orcamento->getValor();
 
         if ($valor >= 500) {
-            return $valor * 0.05;
+            return $valor * 0.07;
         }
 
         return $this->desconto->obterDesconto($orcamento);

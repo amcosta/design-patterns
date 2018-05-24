@@ -46,6 +46,6 @@ class DescontoPorVendaCasada implements DescontoInterface
 
     public function setProximoDesconto(DescontoInterface $desconto)
     {
-        $this->desconto;
+        $this->desconto = $desconto;
     }
 }

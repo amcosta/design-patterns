@@ -12,6 +12,7 @@ class CalculadoraDeDescontoTest extends TestCase
     public function testSemDesconto()
     {
         $item = $this->createMock(OrcamentoItem::class);
+        $item->method('getNome')->willReturn(null);
 
         $orcamento = $this->createMock(Orcamento::class);
         $orcamento->method('getItens')->willReturn([$item]);

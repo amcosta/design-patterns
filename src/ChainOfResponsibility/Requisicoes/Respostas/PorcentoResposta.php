@@ -14,6 +14,11 @@ class PorcentoResposta implements RespostaInterface
      */
     private $resposta;
 
+    public function __construct(RespostaInterface $resposta)
+    {
+        $this->resposta = $resposta;
+    }
+
     public function responde(Requisicao $requisicao, Conta $conta)
     {
         if ($requisicao->getFormato() != Formato::$PORCENTO) {
@@ -25,10 +30,4 @@ class PorcentoResposta implements RespostaInterface
 
         return $string;
     }
-
-    public function setProxima(RespostaInterface $resposta)
-    {
-        $this->resposta = $resposta;
-    }
-
 }

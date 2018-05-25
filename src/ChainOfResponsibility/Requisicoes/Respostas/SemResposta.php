@@ -18,10 +18,4 @@ class SemResposta implements RespostaInterface
     {
         return null;
     }
-
-    public function setProxima(RespostaInterface $resposta)
-    {
-        $this->resposta = $resposta;
-    }
-
 }

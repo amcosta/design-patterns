@@ -14,6 +14,11 @@ class XmlResposta implements RespostaInterface
      */
     private $resposta;
 
+    public function __construct(RespostaInterface $resposta)
+    {
+        $this->resposta = $resposta;
+    }
+
     public function responde(Requisicao $requisicao, Conta $conta)
     {
         if ($requisicao->getFormato() != Formato::$XML) {
@@ -27,10 +32,4 @@ class XmlResposta implements RespostaInterface
 
         return $xml->asXML();
     }
-
-    public function setProxima(RespostaInterface $resposta)
-    {
-        $this->resposta = $resposta;
-    }
-
 }

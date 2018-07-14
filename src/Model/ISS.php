@@ -1,5 +1,7 @@
 <?php
 
+namespace DesignPatterns\Model;
+
 class ISS implements ImpostoInterface
 {
     public function calcular(Orcamento $orcamento)

@@ -21,17 +21,17 @@ class IKCV extends ImpostoCondicionalTemplate
         return false;
     }
 
-    public function verificarCondicaoParaTaxacaoMaxima(Orcamento $orcamento)
+    protected function verificarCondicaoParaTaxacaoMaxima(Orcamento $orcamento)
     {
         return $orcamento->getValor() > 500 && $this->confirmarValorDoItem($orcamento->getItens());
     }
 
-    public function taxacaoMaxima(Orcamento $orcamento)
+    protected function taxacaoMaxima(Orcamento $orcamento)
     {
         return $orcamento->getValor() * 0.1;
     }
 
-    public function taxacaoMinima(Orcamento $orcamento)
+    protected function taxacaoMinima(Orcamento $orcamento)
     {
         return $orcamento->getValor() * 0.06;
     }

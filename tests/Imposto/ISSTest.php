@@ -8,29 +8,29 @@
 
 namespace DesignPatterns\Tests\Model;
 
-use DesignPatterns\Model\ICMS;
-use DesignPatterns\Model\ImpostoInterface;
+use DesignPatterns\Imposto\ImpostoInterface;
+use DesignPatterns\Imposto\ISS;
 use DesignPatterns\Model\Orcamento;
 use PHPUnit\Framework\TestCase;
 
-class ICMSTest extends TestCase
+class ISSTest extends TestCase
 {
     public function testVerifyInterface()
     {
-        $imposto = new ICMS();
+        $imposto = new ISS();
 
         $this->assertInstanceOf(ImpostoInterface::class, $imposto);
     }
 
     public function testCalculateTax()
     {
-        $imposto = new ICMS();
+        $imposto = new ISS();
 
         $orcamento = $this->getMockBuilder(Orcamento::class)->getMock();
         $orcamento->method('getValor')->willReturn(500);
 
         $taxa = $imposto->calcular($orcamento);
 
-        $this->assertEquals(25, $taxa);
+        $this->assertEquals(30, $taxa);
     }
 }

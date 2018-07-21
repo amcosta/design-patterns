@@ -4,15 +4,15 @@ namespace DesignPatterns\ChainOfResponsibility\Descontos;
 
 use DesignPatterns\Model\Orcamento;
 
-class SemDesconto implements DescontoInterface
+class SemDesconto extends DescontoTemplate
 {
-    public function obterDesconto(Orcamento $orcamento)
+    public function validarDesconto(Orcamento $orcamento)
     {
-        return 0;
+        return true;
     }
 
-    public function setProximoDesconto(DescontoInterface $desconto)
+    public function aplicarDesconto(Orcamento $orcamento)
     {
-        // Não tem próximo desconto
+        return 0;
     }
 }

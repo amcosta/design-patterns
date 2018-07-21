@@ -10,26 +10,15 @@ namespace DesignPatterns\ChainOfResponsibility\Descontos;
 
 use DesignPatterns\Model\Orcamento;
 
-class Desconto500Reais implements DescontoInterface
+class Desconto500Reais extends DescontoTemplate
 {
-    /**
-     * @var DescontoInterface
-     */
-    private $desconto;
-
-    public function obterDesconto(Orcamento $orcamento)
+    public function validarDesconto(Orcamento $orcamento)
     {
-        $valor = $orcamento->getValor();
-
-        if ($valor >= 500) {
-            return $valor * 0.07;
-        }
-
-        return $this->desconto->obterDesconto($orcamento);
+        return $orcamento->getValor() >= 500;
     }
 
-    public function setProximoDesconto(DescontoInterface $desconto)
+    public function aplicarDesconto(Orcamento $orcamento)
     {
-        $this->desconto = $desconto;
+        return $orcamento->getValor() * 0.07;
     }
 }

@@ -4,27 +4,15 @@ namespace DesignPatterns\ChainOfResponsibility\Descontos;
 
 use DesignPatterns\Model\Orcamento;
 
-class Desconto5Itens implements DescontoInterface
+class Desconto5Itens extends DescontoTemplate
 {
-    /**
-     * @var DescontoInterface
-     */
-    private $desconto;
-
-    public function obterDesconto(Orcamento $orcamento)
+    public function validarDesconto(Orcamento $orcamento)
     {
-        $itens = $orcamento->getItens();
-        $valor = $orcamento->getValor();
-
-        if (count($itens) >= 5) {
-            return $valor * 0.1;
-        }
-
-        return $this->desconto->obterDesconto($orcamento);
+        return count($orcamento->getItens()) >= 5;
     }
 
-    public function setProximoDesconto(DescontoInterface $desconto)
+    public function aplicarDesconto(Orcamento $orcamento)
     {
-        $this->desconto = $desconto;
+        return $orcamento->getValor() * 0.1;
     }
 }

@@ -1,25 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: alex
- * Date: 24/05/18
- * Time: 19:12
- */
 
 namespace DesignPatterns\ChainOfResponsibility\Descontos;
-
 
 use DesignPatterns\Model\Orcamento;
 use DesignPatterns\Model\OrcamentoItem;
 
-class DescontoPorVendaCasada implements DescontoInterface
+class DescontoPorVendaCasada extends DescontoTemplate
 {
-    /**
-     * @var DescontoInterface
-     */
-    private $desconto;
-
-    public function obterDesconto(Orcamento $orcamento)
+    public function validarDesconto(Orcamento $orcamento)
     {
         $temLapis = false;
         $temCaneta = false;
@@ -37,15 +25,11 @@ class DescontoPorVendaCasada implements DescontoInterface
             }
         }
 
-        if ($temLapis && $temCaneta) {
-            return $orcamento->getValor() * 0.05;
-        }
-
-        return $this->desconto->obterDesconto($orcamento);
+        return $temLapis && $temCaneta;
     }
 
-    public function setProximoDesconto(DescontoInterface $desconto)
+    public function aplicarDesconto(Orcamento $orcamento)
     {
-        $this->desconto = $desconto;
+        return $orcamento->getValor() * 0.05;
     }
 }

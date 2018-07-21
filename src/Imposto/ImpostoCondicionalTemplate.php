@@ -6,7 +6,7 @@ use DesignPatterns\Model\Orcamento;
 
 abstract class ImpostoCondicionalTemplate implements ImpostoInterface
 {
-    public function calcular(Orcamento $orcamento)
+    final public function calcular(Orcamento $orcamento)
     {
         if ($this->verificarCondicaoParaTaxacaoMaxima($orcamento)) {
             return $this->taxacaoMaxima($orcamento);

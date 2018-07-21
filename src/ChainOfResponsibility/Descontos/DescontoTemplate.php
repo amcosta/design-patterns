@@ -11,7 +11,7 @@ abstract class DescontoTemplate implements DescontoInterface
      */
     private $desconto;
 
-    public function obterDesconto(Orcamento $orcamento)
+    final public function obterDesconto(Orcamento $orcamento)
     {
         if ($this->validarDesconto($orcamento)) {
             return $this->aplicarDesconto($orcamento);

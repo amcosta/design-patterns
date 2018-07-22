@@ -3,7 +3,7 @@
 namespace DesignPatterns\Tests\Model;
 
 use DesignPatterns\Imposto\IKCV;
-use DesignPatterns\Imposto\ImpostoInterface;
+use DesignPatterns\Imposto\Imposto;
 use DesignPatterns\Model\Orcamento;
 use PHPUnit\Framework\TestCase;
 
@@ -13,7 +13,7 @@ class IKCVTest extends TestCase
     {
         $imposto = new IKCV();
 
-        $this->assertInstanceOf(ImpostoInterface::class, $imposto);
+        $this->assertInstanceOf(Imposto::class, $imposto);
     }
 
     public function testCalculateTax()

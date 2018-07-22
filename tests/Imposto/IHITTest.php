@@ -3,6 +3,7 @@
 namespace DesignPatterns\Tests\Imposto;
 
 use DesignPatterns\Imposto\IHIT;
+use DesignPatterns\Imposto\Imposto;
 use DesignPatterns\Imposto\ImpostoInterface;
 use DesignPatterns\Model\Orcamento;
 use DesignPatterns\Model\OrcamentoItem;
@@ -14,7 +15,7 @@ class IHITTest extends TestCase
     {
         $imposto = new IHIT();
 
-        $this->assertInstanceOf(ImpostoInterface::class, $imposto);
+        $this->assertInstanceOf(Imposto::class, $imposto);
     }
 
     public function testVerifyMaximumCondition()

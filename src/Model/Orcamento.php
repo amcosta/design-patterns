@@ -2,35 +2,50 @@
 
 namespace DesignPatterns\Model;
 
+use DesignPatterns\State\EmAprovacao;
+use DesignPatterns\State\EstadoInterface;
+
 class Orcamento
 {
-    private $valor;
+    private $valor = 0;
+
+    /**
+     * @var EstadoInterface
+     */
+    private $estado;
 
     /**
      * @var array
      */
     private $itens = [];
 
-    public function __construct($valor = null)
+    public function __construct($valor = 0)
     {
         $this->valor = $valor;
+        $this->estado = new EmAprovacao();
     }
 
     public function getValor()
     {
-        return array_reduce($this->itens, function($total, OrcamentoItem $item) {
-            $total += $item->getValor();
-            return $total;
-        }, 0);
+        return $this->valor;
     }
 
     public function addItem(OrcamentoItem $item)
     {
         $this->itens[] = $item;
+        $this->valor += $item->getValor();
+
+        return $this->getValor();
     }
 
     public function getItens()
     {
         return $this->itens;
+    }
+
+    public function aplicarDescontoExtra()
+    {
+        $desconto = $this->estado->aplicarDescontoExtra($this);
+        $this->valor -= $desconto;
     }
 }

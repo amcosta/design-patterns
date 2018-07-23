@@ -52,4 +52,15 @@ class AprovadorTest extends TestCase
             ['reprovar']
         ];
     }
+
+    /**
+     * @expectedException \DesignPatterns\State\EstadoException
+     */
+    public function testLancarExceptionAoReaplicarDescontoExtra()
+    {
+        $orcamento = new Orcamento(500);
+        $orcamento->aprovar();
+        $orcamento->aplicarDescontoExtra();
+        $orcamento->aplicarDescontoExtra();
+    }
 }

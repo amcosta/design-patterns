@@ -20,6 +20,11 @@ class Orcamento
      */
     private $itens = [];
 
+    /**
+     * @var bool
+     */
+    private $descontoExtraAplicado = false;
+
     public function __construct($valor = 0)
     {
         $this->valor = $valor;
@@ -46,13 +51,25 @@ class Orcamento
 
     public function setEstado(EstadoInterface $estado)
     {
+        if ($this->estado === $estado) {
+            return null;
+        }
+
         $this->estado = $estado;
+        $this->descontoExtraAplicado = false;
     }
 
+    /**
+     * @throws EstadoException
+     */
     public function aplicarDescontoExtra()
     {
-        $desconto = $this->estado->aplicarDescontoExtra($this);
-        $this->valor -= $desconto;
+        if ($this->descontoExtraAplicado) {
+            throw new EstadoException('O desconto extra já foi aplicado');
+        }
+
+        $this->valor -= $this->estado->aplicarDescontoExtra($this);
+        $this->descontoExtraAplicado = true;
     }
 
     /**

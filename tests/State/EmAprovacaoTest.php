@@ -49,4 +49,14 @@ class EmAprovacaoTest extends TestCase
         $orcamento = new Orcamento(500);
         $orcamento->finalizar();
     }
+
+    /**
+     * @expectedException \DesignPatterns\State\EstadoException
+     */
+    public function testLancarExceptionAoReaplicarDescontoExtra()
+    {
+        $orcamento = new Orcamento(500);
+        $orcamento->aplicarDescontoExtra();
+        $orcamento->aplicarDescontoExtra();
+    }
 }

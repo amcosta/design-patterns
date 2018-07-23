@@ -46,4 +46,16 @@ class FinalizadoTest extends TestCase
             ['finalizar']
         ];
     }
+
+    /**
+     * @expectedException \DesignPatterns\State\EstadoException
+     */
+    public function testLancarExceptionAoReaplicarDescontoExtra()
+    {
+        $orcamento = new Orcamento(500);
+        $orcamento->aprovar();
+        $orcamento->finalizar();
+        $orcamento->aplicarDescontoExtra();
+        $orcamento->aplicarDescontoExtra();
+    }
 }

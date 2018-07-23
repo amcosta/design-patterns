@@ -6,6 +6,10 @@ use DesignPatterns\Model\Orcamento;
 
 interface EstadoInterface
 {
+    /**
+     * @param Orcamento $orcamento
+     * @return float
+     */
     public function aplicarDescontoExtra(Orcamento $orcamento);
 
     /**

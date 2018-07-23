@@ -19,12 +19,11 @@ class EmAprovacao implements EstadoInterface
 
     public function reprovar(Orcamento $orcamento)
     {
-        // TODO: Implement reprovar() method.
+        $orcamento->setEstado(new Reprovado());
     }
 
     public function finalizar(Orcamento $orcamento)
     {
         throw new EstadoException('Nâo é possível finalizar um orçamento em aprovação');
     }
-
 }

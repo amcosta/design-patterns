@@ -4,31 +4,22 @@ namespace DesignPatterns\Tests\State;
 
 
 use DesignPatterns\Model\Orcamento;
-use DesignPatterns\State\Aprovado;
 use DesignPatterns\State\EstadoInterface;
+use DesignPatterns\State\Reprovado;
 use PHPUnit\Framework\TestCase;
 
-class AprovadorTest extends TestCase
+class ReprovadoTest extends TestCase
 {
     public function testVerificarInterface()
     {
-        $this->assertInstanceOf(EstadoInterface::class, new Aprovado());
+        $this->assertInstanceOf(EstadoInterface::class, new Reprovado());
     }
 
-    public function testVerificarDescontoDe2Porcento()
+    public function testVerificarDescontoDe0Reais()
     {
         $orcamento = new Orcamento(500);
-        $orcamento->aprovar();
+        $orcamento->reprovar();
         $orcamento->aplicarDescontoExtra();
-
-        $this->assertEquals(490, $orcamento->getValor());
-    }
-
-    public function testMudarEstadoParaFinalizado()
-    {
-        $orcamento = new Orcamento(500);
-        $orcamento->aprovar();
-        $orcamento->finalizar();
 
         $this->assertEquals(500, $orcamento->getValor());
     }
@@ -41,7 +32,7 @@ class AprovadorTest extends TestCase
     public function testLancarExceptionParaEstadoInvalidos($estado)
     {
         $orcamento = new Orcamento(500);
-        $orcamento->aprovar();
+        $orcamento->reprovar();
         $orcamento->$estado();
     }
 

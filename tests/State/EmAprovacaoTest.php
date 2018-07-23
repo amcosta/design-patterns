@@ -23,4 +23,30 @@ class EmAprovacaoTest extends TestCase
         $this->assertEquals(475, $orcamento->getValor());
     }
 
+    public function testAprovarOrcamento()
+    {
+        $orcamento = new Orcamento(500);
+        $orcamento->aprovar();
+        $orcamento->aplicarDescontoExtra();
+
+        $this->assertEquals(490, $orcamento->getValor());
+    }
+
+    public function testReprovarOrcamento()
+    {
+        $orcamento = new Orcamento(500);
+        $orcamento->reprovar();
+        $orcamento->aplicarDescontoExtra();
+
+        $this->assertEquals(500, $orcamento->getValor());
+    }
+
+    /**
+     * @expectedException \DesignPatterns\State\EstadoException
+     */
+    public function testLancarExceptionAoMudarParaFinalizado()
+    {
+        $orcamento = new Orcamento(500);
+        $orcamento->finalizar();
+    }
 }

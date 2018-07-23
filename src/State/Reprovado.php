@@ -14,16 +14,16 @@ class Reprovado implements EstadoInterface
 
     public function aprovar(Orcamento $orcamento)
     {
-        // TODO: Implement aprovar() method.
+        throw new EstadoException('Não é possível aprovar uma nova reprovada');
     }
 
     public function reprovar(Orcamento $orcamento)
     {
-        // TODO: Implement reprovar() method.
+        throw new EstadoException('Não é possível reprovar uma nova reprovada');
     }
 
     public function finalizar(Orcamento $orcamento)
     {
-        // TODO: Implement finalizar() method.
+        $orcamento->setEstado(new Finalizado());
     }
 }

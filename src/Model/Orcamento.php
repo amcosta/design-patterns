@@ -3,6 +3,7 @@
 namespace DesignPatterns\Model;
 
 use DesignPatterns\State\EmAprovacao;
+use DesignPatterns\State\EstadoException;
 use DesignPatterns\State\EstadoInterface;
 
 class Orcamento
@@ -43,9 +44,38 @@ class Orcamento
         return $this->itens;
     }
 
+    public function setEstado(EstadoInterface $estado)
+    {
+        $this->estado = $estado;
+    }
+
     public function aplicarDescontoExtra()
     {
         $desconto = $this->estado->aplicarDescontoExtra($this);
         $this->valor -= $desconto;
+    }
+
+    /**
+     * @throws EstadoException
+     */
+    public function aprovar()
+    {
+        $this->estado->aprovar($this);
+    }
+
+    /**
+     * @throws EstadoException
+     */
+    public function reprovar()
+    {
+        $this->estado->reprovar($this);
+    }
+
+    /**
+     * @throws EstadoException
+     */
+    public function finalizar()
+    {
+        $this->estado->finalizar($this);
     }
 }

@@ -5,16 +5,16 @@ namespace DesignPatterns\State;
 
 use DesignPatterns\Model\Orcamento;
 
-class EmAprovacao implements EstadoInterface
+class Reprovado implements EstadoInterface
 {
     public function aplicarDescontoExtra(Orcamento $orcamento)
     {
-        return $orcamento->getValor() * 0.05;
+        return 0;
     }
 
     public function aprovar(Orcamento $orcamento)
     {
-        $orcamento->setEstado(new Aprovado());
+        // TODO: Implement aprovar() method.
     }
 
     public function reprovar(Orcamento $orcamento)
@@ -24,7 +24,6 @@ class EmAprovacao implements EstadoInterface
 
     public function finalizar(Orcamento $orcamento)
     {
-        throw new EstadoException('Nâo é possível finalizar um orçamento em aprovação');
+        // TODO: Implement finalizar() method.
     }
-
 }

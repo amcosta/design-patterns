@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: amcosta
- * Date: 23/07/18
- * Time: 11:31
- */
 
 namespace DesignPatterns\State\Conta;
 
@@ -13,11 +7,11 @@ class ContaNegativa implements ContaInterface
 {
     public function sacar($valor)
     {
-        // TODO: Implement sacar() method.
+        throw new \Exception('Não é possível sacar de uma conta negativa');
     }
 
-    public function depositar($valor)
+    public function depositar(Conta $conta, $valor)
     {
-        // TODO: Implement depositar() method.
+        return $conta->getSaldo() * 0.95;
     }
 }

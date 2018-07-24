@@ -13,11 +13,11 @@ class ContaPositiva implements ContaInterface
 {
     public function sacar($valor)
     {
-        // TODO: Implement sacar() method.
+        return $valor;
     }
 
-    public function depositar($valor)
+    public function depositar(Conta $conta, $valor)
     {
-        // TODO: Implement depositar() method.
+        return $conta->getSaldo() * 0.98;
     }
 }
